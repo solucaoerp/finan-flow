@@ -4,6 +4,7 @@
  */
 
 const { Sequelize } = require('sequelize');
+const path = require('path');
 
 /**
  * Instância do Sequelize configurada para conectar-se a um banco de dados SQLite.
@@ -17,8 +18,8 @@ const { Sequelize } = require('sequelize');
  */
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: '../database/database.db', // Caminho para o arquivo de banco de dados
-    logging: false // console.log // Ativa a exibição de logs SQL no console para depuração
+    storage: path.resolve(__dirname, '../../database/database.db'),
+    logging: false
 });
 
 module.exports = sequelize;

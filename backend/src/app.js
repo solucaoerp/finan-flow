@@ -17,7 +17,7 @@ app.use(express.json());
  * Importa e configura as rotas principais da API.
  */
 const routes = require('./routes'); // Assegure-se de que o caminho para o arquivo de rotas está correto
-app.use('/api', routes); // Prefixo '/api' para todas as rotas definidas em 'routes'
+app.use('/api', routes);            // Prefixo '/api' para todas as rotas definidas em 'routes'
 
 /**
  * Rota raiz que retorna uma mensagem simples para verificar se o servidor está operacional.
