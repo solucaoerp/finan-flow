@@ -1,35 +1,22 @@
-/**
- * Arquivo principal do servidor Express para a aplicação.
- * Este arquivo configura o servidor, define rotas e gerencia a conexão com o banco de dados.
- * @module app
- */
-
-const sequelize = require('./config/database'); // Importa a configuração do Sequelize
 const express = require('express');
+const sequelize = require('./config/database');
+
+// Cria uma instância do Express
 const app = express();
 
-/**
- * Middleware para parsear JSON no corpo das requisições.
- */
-app.use(express.json());
+// Middlewares
+app.use(express.json()); // Middleware para parsear JSON no corpo das requisições
 
-/**
- * Importa e configura as rotas principais da API.
- */
-const routes = require('./routes'); // Assegure-se de que o caminho para o arquivo de rotas está correto
-app.use('/api', routes);            // Prefixo '/api' para todas as rotas definidas em 'routes'
+// Rotas
+const usuarioRoutes = require('./routes/usuario');
+app.use(usuarioRoutes);
 
-/**
- * Rota raiz que retorna uma mensagem simples para verificar se o servidor está operacional.
- */
+// Rotas de Raiz
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Hello World!'); // Rota raiz que retorna uma mensagem simples
 });
 
-/**
- * Teste e conexão inicial com o banco de dados usando Sequelize.
- * Autentica a conexão com o banco de dados e sincroniza os modelos com as tabelas, sem forçar a recriação das tabelas.
- */
+// Conexão com o Banco de Dados
 sequelize.authenticate()
     .then(() => {
         console.log('Conexão com o banco de dados estabelecida com sucesso.');
@@ -49,3 +36,6 @@ sequelize.authenticate()
     .catch((authError) => {
         console.error('Erro ao conectar com o banco de dados:', authError);
     });
+
+// Exporta a instância do Express para ser utilizada em outros arquivos, se necessário
+module.exports = app;
