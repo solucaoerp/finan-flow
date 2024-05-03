@@ -64,12 +64,15 @@ O arquivo `database.js` na pasta `config` configura o Sequelize para conectar-se
 
 ```javascript
 const { Sequelize } = require('sequelize');
+const path = require('path');
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: '../database/database.db',
-    logging: console.log // Habilita logs SQL para depuração
+    storage: path.resolve(__dirname, '../../database/database.db'),
+    logging: false // console.log babilita logs SQL para depuração
 });
+
+module.exports = sequelize;
 ```
 
 ### Modelos
