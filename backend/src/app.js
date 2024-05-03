@@ -39,7 +39,7 @@ sequelize.authenticate()
                 // Inicia o servidor após a conexão e sincronização bem-sucedidas
                 const PORT = process.env.PORT || 3000;
                 app.listen(PORT, () => {
-                    console.log(`Server running on port ${PORT}`);
+                    console.log(`Servidor rodando na porta ${PORT}`);
                 });
             })
             .catch((syncError) => {

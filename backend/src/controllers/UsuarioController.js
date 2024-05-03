@@ -27,10 +27,10 @@ const Usuario = require('../models/Usuario');
 exports.listarUsuarios = async (req, res) => {
     try {
         const usuarios = await Usuario.findAll();
-        console.log(usuarios); // Verifica se os usuários foram recuperados com sucesso
+        //console.log(usuarios); // Verifica se os usuários foram recuperados com sucesso
         res.send(usuarios);
     } catch (error) {
-        console.error(error); // Verifica se há algum erro durante a execução da consulta
+        //console.error(error); // Verifica se há algum erro durante a execução da consulta
         res.status(500).send({
             message: 'Erro ao obter os usuários'
         });
