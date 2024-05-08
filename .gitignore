@@ -40,7 +40,7 @@ yarn-error.log*
 *.db-journal
 *-wal
 *-shm
-*.db
+database.db
 
 # Outros
 .DS_Store
