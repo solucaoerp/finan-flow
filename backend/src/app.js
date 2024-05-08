@@ -8,12 +8,15 @@ const app = express();
 app.use(express.json()); // Middleware para parsear JSON no corpo das requisições
 
 // Rotas
-const usuarioRoutes = require('./routes/usuario');
+const usuarioRoutes = require('./routes/usuarioRoutes');
+const categoriaRoutes = require('./routes/categoriaRoutes');
+
 app.use(usuarioRoutes);
+app.use(categoriaRoutes);
 
 // Rotas de Raiz
 app.get('/', (req, res) => {
-    res.send('Hello World!'); // Rota raiz que retorna uma mensagem simples
+    res.send('Hello World!');
 });
 
 // Conexão com o Banco de Dados
