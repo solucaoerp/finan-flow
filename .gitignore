@@ -37,6 +37,9 @@ yarn-error.log*
 # Arquivos de banco de dados
 *.sqlite
 *.sqlite3
+*.db-journal
+*-wal
+*-shm
 
 # Outros
 .DS_Store
